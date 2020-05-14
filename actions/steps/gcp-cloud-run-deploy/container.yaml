@@ -1,0 +1,6 @@
+apiVersion: container/v1
+kind: StepContainer
+inherit: ../hack/defs/gcloud
+title: Deploy a revision to Google Cloud Run
+description: >
+  This step deploys a new revision to a Google Cloud Run service.
