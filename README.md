@@ -2,18 +2,6 @@
 
 Integration with Google for Puppet Relay.
 
-## External requirements
-
-_TBD_
-
-## Getting started
-
-_TBD_
-
-## Examples
-
-_TBD_
-
 ## Contributing
 
 ### Issues
