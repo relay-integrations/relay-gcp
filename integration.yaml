@@ -5,7 +5,7 @@ apiVersion: integration/v1
 kind: Integration
 
 # The integration slug. Required.
-name: google
+name: gcp
 
 # The release channel for this integration. One of alpha, beta, rc or stable.
 # Optional. Defaults to stable.
@@ -22,11 +22,11 @@ version: v20200408
 
 # The shortest possible accurate description of this integration. Required. May
 # just be the name of the service.
-summary: Google
+summary: Google Cloud Platform
 
 # A paragraph or two describing what this integration does. Optional. Markdown.
 description: |
-    Integration with Google services, mostly Google Cloud services.
+    Integration with Google Cloud Platform
 
 # License information. Optional. If not specified, this integration is assumed
 # to be unlicensed proprietary code. Otherwise, must be a valid SPDX License
@@ -41,8 +41,8 @@ owner:
   url: https://puppet.com
 
 # URL to this integration's Website. Optional.
-homepage: https://github.com/relay-integrations/relay-google
+homepage: https://github.com/relay-integrations/relay-gcp
 
 # URL to this integration's source code. Optional. If the homepage is a GitHub
 # link, may be inferred automatically.
-source: git://github.com/relay-integrations/relay-google.git
+source: git://github.com/relay-integrations/relay-gcp.git
