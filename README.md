@@ -2,6 +2,16 @@
 
 Integration with Google for Puppet Relay.
 
+## Actions
+
+The following are supported actions:
+
+| Type | Name | Description |
+|------|-------------|-----| 
+| Step | [gcp-step-cloud-run-deploy](/steps/gcp-step-cloud-run-deploy) | Deploy cloud run service revision |
+| Step | [gcp-step-instance-delete](/steps/gcp-step-instance-delete) | Delete GCP instances |
+| Step | [gcp-step-instance-list](/steps/gcp-step-instance-list) | List GCP instances |
+
 ## Contributing
 
 ### Issues

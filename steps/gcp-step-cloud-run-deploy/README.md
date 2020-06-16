@@ -1,4 +1,4 @@
-# gcp-cloud-run-deploy
+# gcp-step-cloud-run-deploy
 
 This [Google Cloud Run](https://cloud.google.com/run) step container deploys a
 new revision of a service to the managed Cloud Run environment.
@@ -42,7 +42,7 @@ This step does not currently support the Anthos or VMWare Cloud Run platforms.
 steps:
 # ...
 - name: gcp-cloud-run-deploy
-  image: projectnebula/gcp-cloud-run-deploy
+  image: relaysh/gcp-step-cloud-run-deploy
   spec:
     credentials:
       service-account.json:

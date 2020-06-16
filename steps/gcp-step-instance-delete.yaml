@@ -7,7 +7,7 @@ kind: Step
 
 # The name of the action. Required. Must be exactly the name of the directory
 # containing the action.
-name: gcp-cloud-delete-instances
+name: gcp-step-instance-delete
 
 # The version of the action. Required. Must be an integer. If specified in the
 # directory name, must be exactly the version in the directory name.
