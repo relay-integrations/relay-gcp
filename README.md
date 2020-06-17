@@ -1,4 +1,4 @@
-# Google integration
+# GCP integration
 
 Integration with Google for Puppet Relay.
 
