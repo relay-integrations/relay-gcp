@@ -7,12 +7,12 @@ import json
 def slice(orig, keys):
     return {key: orig[key] for key in keys if key in orig}
 
-def do_delete_instance(compute, project_id, zone, name):
-    print('Deleting instance {0}'.format(name))
-    result = compute.instances().delete(project=project_id, zone=zone, instance=name).execute()
+def do_stop_instance(compute, project_id, zone, name):
+    print('Stopping instance {0}'.format(name))
+    result = compute.instances().stop(project=project_id, zone=zone, instance=name).execute()
     return result['items'] if 'items' in result else []
 
-def delete_instances(instances):
+def stop_instances(instances):
     # For security purposes we whitelist the keys that can be fed in to the
     # google oauth library. This prevents workflow users from feeding arbitrary
     # data in to that library.
@@ -43,10 +43,10 @@ def delete_instances(instances):
 
     for instance in instances:
         if isinstance(instance, dict):
-            do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance["name"])
+            do_stop_instance(compute, project_id=credentials.project_id, zone=zone, name=instance["name"])
         else: 
-            do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance)
+            do_stop_instance(compute, project_id=credentials.project_id, zone=zone, name=instance)
 
 if __name__ == "__main__":
     relay = Interface()
-    delete_instances(relay.get(D.instances))
+    stop_instances(relay.get(D.instances))

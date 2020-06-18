@@ -7,12 +7,12 @@ import json
 def slice(orig, keys):
     return {key: orig[key] for key in keys if key in orig}
 
-def do_delete_instance(compute, project_id, zone, name):
-    print('Deleting instance {0}'.format(name))
-    result = compute.instances().delete(project=project_id, zone=zone, instance=name).execute()
+def do_delete_disk(compute, project_id, zone, name):
+    print('Deleting disk {0}'.format(name))
+    result = compute.disks().delete(project=project_id, zone=zone, disk=name).execute()
     return result['items'] if 'items' in result else []
 
-def delete_instances(instances):
+def delete_disks(disks):
     # For security purposes we whitelist the keys that can be fed in to the
     # google oauth library. This prevents workflow users from feeding arbitrary
     # data in to that library.
@@ -41,12 +41,12 @@ def delete_instances(instances):
     credentials = service_account.Credentials.from_service_account_info(service_account_info)
     compute = googleapiclient.discovery.build("compute", "v1", credentials=credentials)
 
-    for instance in instances:
-        if isinstance(instance, dict):
-            do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance["name"])
+    for disk in disks:
+        if isinstance(disk, dict):
+            do_delete_disk(compute, project_id=credentials.project_id, zone=zone, name=disk["name"])
         else: 
-            do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance)
+            do_delete_disk(compute, project_id=credentials.project_id, zone=zone, name=disk)
 
 if __name__ == "__main__":
     relay = Interface()
-    delete_instances(relay.get(D.instances))
+    delete_disks(relay.get(D.disks))

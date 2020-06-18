@@ -10,11 +10,11 @@ def slice(orig, keys):
 def slice_arr(orig, keys):
     return [slice(obj, keys) for obj in orig]
 
-def do_list_instances(compute, project_id, zone):
-    result = compute.instances().list(project=project_id, zone=zone).execute()
+def do_list_disks(compute, project_id, zone):
+    result = compute.disks().list(project=project_id, zone=zone).execute()
     return result['items'] if 'items' in result else []
 
-def list_instances():
+def list_disks():
     # For security purposes we whitelist the keys that can be fed in to the
     # google oauth library. This prevents workflow users from feeding arbitrary
     # data in to that library.
@@ -43,42 +43,41 @@ def list_instances():
     credentials = service_account.Credentials.from_service_account_info(service_account_info)
     compute = googleapiclient.discovery.build('compute', 'v1', credentials=credentials)
 
-    instances = do_list_instances(compute, credentials.project_id, zone=zone)
+    disks = do_list_disks(compute, credentials.project_id, zone=zone)
 
     # These are the keys that we're going to cherry-pick out of the result.
     # We're explicit about the keys that we want to publish for documentation
     # purposes.
-    instance_keys = [
+    disk_keys = [
 	"id",
 	"kind",
-	"fingerprint",
 	"labelFingerprint",
 	"labels",
-	"cpuPlatfrom",
-	"creationTimestamp",
-	"deletionProtection",
 	"description",
+	"creationTimestamp",
+	"sizeGb",
+	"users",
 	"name",
-	"metadata",
 	"selfLink",
 	"status",
-	"tags",
 	"zone",
-	"machineType",
-	"canIdForward",
+    "sourceSnapshot",
+    "sourceSnapshotId",
+    "options"
+    "type"
     ]
 
-    return slice_arr(instances, instance_keys)
+    return slice_arr(disks, disk_keys)
 
 if __name__ == "__main__":
     relay = Interface()
-    instances = list_instances()
-    if (len(instances) == 0):
-        print('No instances found! Exiting.')
+    disks = list_disks()
+    if (len(disks) == 0):
+        print('No disks found! Exiting.')
         exit(1)
-    print("Found the following instances:\n")
-    print("{:<30} {:<30} {:<30}".format('NAME', 'STATUS', 'TYPE'))
-    for instance in instances: 
-        print("{:<30} {:<30} {:<30}".format(instance['name'], instance['status'], instance['machineType']))
-    print('\nAdding {0} instance(s) to the output `instances`'.format(len(instances)))
-    relay.outputs.set("instances", instances)
+    print("Found the following disks:\n")
+    print("{:<80} {:<30} {:<30}".format('NAME', 'STATUS', 'SIZEGB'))
+    for disk in disks: 
+        print("{:<80} {:<30} {:<30}".format(disk['name'], disk['status'], disk['sizeGb']))
+    print('\nAdding {0} disk(s) to the output `disks`'.format(len(disks)))
+    relay.outputs.set("disks", disks)
