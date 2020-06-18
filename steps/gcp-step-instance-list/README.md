@@ -18,7 +18,7 @@ This GCP step container describes a set of instances and their metadata.
   spec:
     google: &google
       service_account_info: !Connection { type: gcp, name: my-gcp-account }
-      zone: us-centra1-a
+      zone: us-central1-a
 ```
 
 ## Example output `instances`

@@ -14,6 +14,9 @@ The following are supported actions:
 | Step | [gcp-step-instance-start](/steps/gcp-step-instance-start) | Start GCP instances |
 | Step | [gcp-step-instance-stop](/steps/gcp-step-instance-stop) | Stops GCP instances |
 | Step | [gcp-step-instance-reset](/steps/gcp-step-instance-reset) | Resets GCP instances |
+| Step | [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
+| Step | [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
+
 
 ## Contributing
 
