@@ -2,6 +2,7 @@ import googleapiclient.discovery
 
 from google.oauth2 import service_account
 from nebula_sdk import Interface, Dynamic as D
+import json
 
 def slice(orig, keys):
     return {key: orig[key] for key in keys if key in orig}
@@ -28,21 +29,24 @@ def delete_instances(instances):
         "client_x509_cert_url",
     ]
 
-    zone = D.google.zone
+    zone = relay.get(D.google.zone)
 
     if not zone:
         print("Missing `google.zone` parameter on step configuration.")
         exit(1)
 
     # TODO: How to validate all the required data is present here?
-    service_account_info = slice(D.google.service_account_info, service_account_info_keys)
+    service_account_info=slice(json.loads(relay.get(D.google.service_account_info)['serviceAccountKey']), service_account_info_keys)
 
     credentials = service_account.Credentials.from_service_account_info(service_account_info)
     compute = googleapiclient.discovery.build("compute", "v1", credentials=credentials)
 
     for instance in instances:
-        do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance["name"])
+        if isinstance(instance, dict):
+            do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance["name"])
+        else: 
+            do_delete_instance(compute, project_id=credentials.project_id, zone=zone, name=instance)
 
 if __name__ == "__main__":
-    ni = Interface()
-    delete_instances(D.instances)
+    relay = Interface()
+    delete_instances(relay.get(D.instances))

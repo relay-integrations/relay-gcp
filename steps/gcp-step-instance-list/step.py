@@ -2,6 +2,7 @@ import googleapiclient.discovery
 
 from google.oauth2 import service_account
 from nebula_sdk import Interface, Dynamic as D
+import json
 
 def slice(orig, keys):
     return {key: orig[key] for key in keys if key in orig}
@@ -30,16 +31,16 @@ def list_instances():
         "client_x509_cert_url",
     ]
 
-    zone = D.google.zone
+    zone = relay.get(D.google.zone)
 
     if not zone:
         print("Missing `google.zone` parameter on step configuration.")
         exit(1)
 
     # TODO: How to validate all the required data is present here?
-    service_account_info = slice(D.google.service_account_info, service_account_info_keys)
+    service_account_info=slice(json.loads(relay.get(D.google.service_account_info)['serviceAccountKey']), service_account_info_keys)
 
-    credentials = service_account.Credentials.from_service_account_info(D.google.service_account_info)
+    credentials = service_account.Credentials.from_service_account_info(service_account_info)
     compute = googleapiclient.discovery.build('compute', 'v1', credentials=credentials)
 
     instances = do_list_instances(compute, credentials.project_id, zone=zone)
@@ -70,7 +71,14 @@ def list_instances():
     return slice_arr(instances, instance_keys)
 
 if __name__ == "__main__":
-    ni = Interface()
+    relay = Interface()
     instances = list_instances()
-    print('Adding {0} instance(s) to the output `instances`'.format(len(instances)))
-    ni.ouputs.set("instances", instances)
+    if (len(instances) == 0):
+        print('No instances found! Exiting.')
+        exit(1)
+    print("Found the following instances:\n")
+    print("{:<30} {:<30} {:<30}".format('NAME', 'STATUS', 'TYPE'))
+    for instance in instances: 
+        print("{:<30} {:<30} {:<30}".format(instance['name'], instance['status'], instance['machineType']))
+    print('\nAdding {0} instance(s) to the output `instances`'.format(len(instances)))
+    relay.outputs.set("instances", instances)
