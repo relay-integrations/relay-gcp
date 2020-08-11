@@ -7,23 +7,23 @@ kind: Step
 
 # The name of the action. Required. Must be exactly the name of the directory
 # containing the action.
-name: gcp-step-cloud-run-deploy
+name: gcp-step-instance-start
 
 # The version of the action. Required. Must be an integer. If specified in the
 # directory name, must be exactly the version in the directory name.
 version: 3
 
 # High-level phrase describing what this action does. Required.
-summary: 
+summary: Instance start
 
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
 description: |
-  
+
 
 # URL or path relative to this file to an icon or icons representing this
 # action. Optional. Defaults to the integration icon.
-icon: 
+icon:
 
 # The mechanism to use to construct this step. Required. Must be an action
 # builder. See the Builders section below.
@@ -35,3 +35,6 @@ build:
 
   # The builder to use. Required.
   kind: Docker
+
+publish:
+  repository: relaysh/gcp-step-instance-start
