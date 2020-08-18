@@ -33,6 +33,8 @@ description: |
 # Expression (similar to npm) or an object referencing a license file.
 license: Apache-2.0
 
+icon:
+
 # Owner of this integration. Required, but may be optional in the future if it
 # can be inferred from the provider of the integration.
 owner:
