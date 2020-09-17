@@ -1,0 +1,46 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"google": {
+			"type": "object",
+			"description": "A mapping of GCP account configuration.",
+			"properties": {
+				"service_account_info": {
+					"type": "object",
+					"x-relay-connectionType": "gcp",
+					"description": "A Relay Google Cloud Platform (GCP) connection to use",
+					"properties": {
+						"service-account.json": {
+							"type": "string",
+							"description": "A base64-encoded JSON service account key to use for deploying the revision."
+						}
+					},
+					"required": [
+						"service-account.json"
+					]
+				},
+				"zone": {
+					"type": "string",
+					"description": "The GCP zone to use (for example, `us-central1-a`)."
+				}
+			},
+			"required": [
+				"service_account_info",
+				"zone"
+			]
+		},
+		"instances": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "The list of instances"
+		}
+	},
+	"required": [
+		"google",
+		"instances"
+	],
+	"additionalProperties": false
+}

@@ -10,7 +10,6 @@ For more information on acquiring the `service account` key, see the [reference 
 > contents of a file, you must encode the values using base64 encoding, and use
 > the encoded string as the secret value.
 
-
 ## Limitations
 
 This step does not currently support the Anthos or VMWare Cloud Run platforms.
