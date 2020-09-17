@@ -97,11 +97,13 @@
     },
     "env": {
         "type":"object",
-        "description":"A YAML key-value mapping of environment variables to provide each container."
+        "description":"A YAML key-value mapping of environment variables to provide each container.",
+        "additionalProperties": true
     },
     "labels": {
         "type":"object",
-        "description":"A YAML key-value mapping of labels to add to the revision."
+        "description":"A YAML key-value mapping of labels to add to the revision.",
+        "additionalProperties": true
     },
     "allowUnauthenticated": {
         "type":"boolean",
