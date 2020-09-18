@@ -11,13 +11,12 @@
 					"x-relay-connectionType": "gcp",
 					"description": "A Relay Google Cloud Platform (GCP) connection to use",
 					"properties": {
-						"service-account.json": {
-							"type": "string",
-							"description": "A base64-encoded JSON service account key to use for deploying the revision."
+						"serviceAccountKey": {
+							"type": "string"
 						}
 					},
 					"required": [
-						"service-account.json"
+						"serviceAccountKey"
 					]
 				},
 				"zone": {
