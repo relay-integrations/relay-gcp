@@ -2,14 +2,6 @@
 
 This GCP step container describes a set of disks and their metadata.
 
-## Specification 
-
-| Setting | Child setting | Data type | Description | Default | Required |
-|---------|---------------|-----------|-------------|---------|----------|
-| `google` || mapping | A mapping of GCP account configuration. | None | True |
-|| `service_account_info` | GCP Connection | Relay Connection for the GCP account. Use the Connection sidebar to configure the Connection | None | True |
-|| `zone` | string | The GCP zone to use (for example, `us-central1-a`). | None | True |
-
 ## Example 
 
 ```yaml

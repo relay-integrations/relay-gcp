@@ -38,3 +38,11 @@ build:
 
 publish:
   repository: relaysh/gcp-step-disk-list
+
+schemas:
+  spec: 
+    source: file
+    file: spec.schema.json
+  output:
+    source: file
+    file: output.schema.json

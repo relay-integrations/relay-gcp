@@ -38,3 +38,8 @@ build:
 
 publish:
   repository: relaysh/gcp-step-cloud-run-deploy
+
+schemas:
+  spec: 
+    source: file
+    file: spec.schema.json
