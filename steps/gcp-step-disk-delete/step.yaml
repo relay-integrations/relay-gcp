@@ -43,3 +43,17 @@ schemas:
   spec: 
     source: file
     file: spec.schema.json
+
+examples: 
+- summary: Delete a single disk from a GCP account
+  content:
+    apiVersion: v1
+    kind: Step
+    name: delete-disks
+    image: relaysh/gcp-step-disk-delete	
+    spec:
+      google:
+        service_account_info: !Connection { type: gcp, name: my-gcp-account }
+        zone: !Parameter gcpZone
+      disks:
+        - !Parameter diskName

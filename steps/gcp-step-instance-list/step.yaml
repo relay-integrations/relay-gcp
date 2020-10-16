@@ -46,3 +46,15 @@ schemas:
   output:
     source: file
     file: output.schema.json
+
+examples: 
+- summary: List the compute instances in a GCP account
+  content:
+    apiVersion: v1
+    kind: Step
+    name: list-instances
+    image: relaysh/gcp-step-instance-list
+    spec:
+      google:
+        service_account_info: !Connection { type: gcp, name: my-gcp-account }
+        zone: !Parameter gcpZone

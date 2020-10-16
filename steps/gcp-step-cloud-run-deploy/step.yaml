@@ -43,3 +43,20 @@ schemas:
   spec: 
     source: file
     file: spec.schema.json
+
+examples:
+  - summary: Deploy to Google Cloud Run
+    content: 
+      apiVersion: v1
+      kind: Step
+      name: gcp-cloud-run-deploy
+      image: relaysh/gcp-step-cloud-run-deploy
+      spec:
+        credentials:
+          service-account.json: !Secret service-account-base64
+        project: !Parameter gcpProject
+        service: !Parameter serviceName
+        region: !Parameter gcpRegion
+        image:
+          repository: !Parameter imageRepository
+          tag: !Parameter imageTag
