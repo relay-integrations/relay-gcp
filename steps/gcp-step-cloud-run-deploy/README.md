@@ -13,32 +13,3 @@ For more information on acquiring the `service account` key, see the [reference 
 ## Limitations
 
 This step does not currently support the Anthos or VMWare Cloud Run platforms.
-
-## Example
-
-```yaml
-steps:
-# ...
-- name: gcp-cloud-run-deploy
-  image: relaysh/gcp-step-cloud-run-deploy
-  spec:
-    credentials:
-      service-account.json:
-        $type: Secret
-        name: service-account-base64
-    project: nebula-contrib
-    service: my-test-service
-    region: us-central1
-    image:
-      repository: gcr.io/cloudrun/hello
-      tag: latest
-    concurrency: 10
-    maxInstances: 10
-    env:
-      MY_ENV_VAR: MY_ENV_VALUE
-    labels:
-      environment: production
-    allowUnauthenticated: true
-    serviceAccount:
-      email: my-custom-sa@cloudrun.iam.gserviceaccount.com
-```

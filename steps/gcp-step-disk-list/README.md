@@ -2,17 +2,6 @@
 
 This GCP step container describes a set of disks and their metadata.
 
-## Example 
-
-```yaml
-- name: list-disks
-  image: relaysh/gcp-step-disk-list
-  spec:
-    google: &google
-      service_account_info: !Connection { type: gcp, name: my-gcp-account }
-      zone: us-central1-a
-```
-
 ## Example output `disks`
 
 ```

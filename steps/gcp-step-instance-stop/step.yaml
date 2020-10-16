@@ -43,3 +43,17 @@ schemas:
   spec: 
     source: file
     file: spec.schema.json
+
+examples:
+- summary: Stop a single compute instance in a GCP account
+  content:
+    apiVersion: 1
+    kind: Step
+    name: stop-instances
+    image: relaysh/gcp-step-instance-stop	
+    spec:
+      google:
+        service_account_info: !Connection { type: gcp, name: my-gcp-account }
+        zone: !Parameter gcpZone
+      instances: 
+      - !Parameter instanceName

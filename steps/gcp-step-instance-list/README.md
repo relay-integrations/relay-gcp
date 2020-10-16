@@ -2,17 +2,6 @@
 
 This GCP step container describes a set of instances and their metadata.
 
-## Example 
-
-```yaml
-- name: list-instances
-  image: relaysh/gcp-step-instance-list
-  spec:
-    google: &google
-      service_account_info: !Connection { type: gcp, name: my-gcp-account }
-      zone: us-central1-a
-```
-
 ## Example output `instances`
 
 ```

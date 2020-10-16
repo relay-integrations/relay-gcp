@@ -43,3 +43,17 @@ schemas:
   spec: 
     source: file
     file: spec.schema.json
+
+examples:
+- summary: Start a single compute instance in a GCP account
+  content:
+    apiVersion: 1
+    kind: Step
+    name: start-instances
+    image: relaysh/gcp-step-instance-start	
+    spec:
+      google:
+        service_account_info: !Connection { type: gcp, name: my-gcp-account }
+        zone: !Parameter gcpZone
+      instances: 
+      - !Parameter instanceName
