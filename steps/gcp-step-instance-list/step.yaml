@@ -50,7 +50,7 @@ schemas:
 examples: 
 - summary: List the compute instances in a GCP account
   content:
-    apiVersion: 1
+    apiVersion: v1
     kind: Step
     name: list-instances
     image: relaysh/gcp-step-instance-list

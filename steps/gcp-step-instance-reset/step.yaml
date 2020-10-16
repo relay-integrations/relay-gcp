@@ -47,7 +47,7 @@ schemas:
 examples: 
 - summary: Reset a single compute instance in a GCP account
   content:
-    apiVersion: 1
+    apiVersion: v1
     kind: Step
     name: reset-instances
     image: relaysh/gcp-step-instance-reset	

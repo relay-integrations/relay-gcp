@@ -47,7 +47,7 @@ schemas:
 examples:
   - summary: Deploy to Google Cloud Run
     content: 
-      apiVersion: 1
+      apiVersion: v1
       kind: Step
       name: gcp-cloud-run-deploy
       image: relaysh/gcp-step-cloud-run-deploy

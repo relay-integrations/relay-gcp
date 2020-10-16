@@ -47,7 +47,7 @@ schemas:
 examples: 
 - summary: Delete a single compute instance in a GCP account
   content: 
-    apiVersion: 1
+    apiVersion: v1
     kind: Step
     name: delete-instances
     image: relaysh/gcp-step-instance-delete	
