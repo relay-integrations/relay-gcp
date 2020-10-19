@@ -14,7 +14,7 @@ name: gcp-step-disk-list
 version: 3
 
 # High-level phrase describing what this action does. Required.
-summary: Disk list
+summary: List disks
 
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
