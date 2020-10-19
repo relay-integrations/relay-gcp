@@ -14,7 +14,7 @@ name: gcp-step-instance-reset
 version: 3
 
 # High-level phrase describing what this action does. Required.
-summary: Instance reset
+summary: Reset instances
 
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
