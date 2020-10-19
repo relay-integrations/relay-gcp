@@ -14,7 +14,7 @@ name: gcp-step-instance-start
 version: 3
 
 # High-level phrase describing what this action does. Required.
-summary: Instance start
+summary: Start instances
 
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
