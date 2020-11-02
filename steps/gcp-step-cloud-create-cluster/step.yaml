@@ -1,0 +1,11 @@
+apiVersion: integration/v1
+kind: Step
+name: gcp-step-cloud-create-cluster
+version: 1
+summary: Cloud create cluster
+description: |
+build:
+  apiVersion: build/v1
+  kind: Docker
+publish:
+  repository: relaysh/gcp-step-cloud-create-cluster
