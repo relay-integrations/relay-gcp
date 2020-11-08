@@ -1,0 +1,30 @@
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "credentials": {
+        "type": "object",
+        "properties": {
+          "service-account.json": {
+            "type": "string"
+          }
+        }
+    },
+    "namespace": {
+        "type":"string",
+        "description":"The namespace in which the deployment is running"
+    },
+    "deployment": {
+        "type":"string",
+        "description":"The name of the deployment to operate on"
+    },
+  },
+  "required": [
+      "credentials",
+      "namespace",
+      "deployment"
+  ],
+  "additionalProperties": false
+}
+

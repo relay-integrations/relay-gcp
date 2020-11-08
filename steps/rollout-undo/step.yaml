@@ -1,0 +1,43 @@
+# The schema version. Required. Must be exactly the string "integration/v1".
+apiVersion: integration/v1
+
+# The schema kind. Required. Must be one of "Query", "Step", or "Trigger"
+# corresponding to its directory location.
+kind: Step
+
+# The name of the action. Required. Must be exactly the name of the directory
+# containing the action.
+name: rollout-undo
+
+# The version of the action. Required. Must be an integer. If specified in the
+# directory name, must be exactly the version in the directory name.
+version: 1
+
+# High-level phrase describing what this action does. Required.
+summary: Undo the rollout of a Kubernetes Deployment
+
+# Single-paragraph explanation of what this action does in more detail.
+# Optional. Markdown.
+description: |
+    This will roll back a failing Kubernetes deployment to its
+    previous state, using 'kubectl rollout undo'
+
+publish:
+  repository: relaysh/gcp-step-rollout-undo
+
+schemas:
+  spec: 
+    source: file
+    file: spec.schema.json
+
+examples:
+  - summary: Undo a rollout of the nginx deployment in namespace production
+    content: 
+      apiVersion: v1
+      kind: Step
+      name: gcp-rollback
+      image: relaysh/gcp-step-rollout-undo
+      spec:
+        credentials: !Connection { type: gcp, name: relay-service-account }
+        deployment: !Parameter serviceName
+        namespace: !Parameter namespace
