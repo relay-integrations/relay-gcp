@@ -29,6 +29,14 @@ schemas:
   spec: 
     source: file
     file: spec.schema.json
+  outputs:
+   $schema: http://json-schema.org/draft-07/schema#
+   type: object
+   properties:
+     result:
+       type: string
+       description: The result of the kubectl command, both stderr and stdout
+    
 
 examples:
   - summary: Undo a rollout of the nginx deployment in namespace production
