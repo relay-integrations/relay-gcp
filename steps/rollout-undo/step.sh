@@ -72,4 +72,7 @@ ZONE="$( $NI get -p '{ .zone }' )"
 # generate a kubeconfig
 $GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE
 
-kubectl rollout undo deployment.v1.apps/${DEPLOYMENT} --namespace=${NAMESPACE}
+RESULT=$(kubectl rollout undo deployment.v1.apps/${DEPLOYMENT} --namespace=${NAMESPACE} 2>&1)
+echo $RESULT
+
+$NI output set -k result -v "${RESULT}"
