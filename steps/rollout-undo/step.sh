@@ -42,6 +42,10 @@ $NI gcp config -d "${WORKDIR}/creds"
 
 [ -f "${WORKDIR}/creds/credentials.json" ] || usage "spec: specify a gcp connection as \`google: \!Connection ...\` in your spec"
 
+PROJECT=$(jq -r .project_id ${WORKDIR}/creds/credentials.json)
+
+$GCLOUD config set project ${PROJECT}
+
 $GCLOUD config set core/disable_usage_reporting true
 $GCLOUD config set component_manager/disable_update_check true
 
