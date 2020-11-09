@@ -38,16 +38,16 @@ usage() {
 # Setup
 #
 
-$NI credentials config -d "${WORKDIR}/creds"
+$NI gcp config -d "${WORKDIR}/creds"
 
-[ -f "${WORKDIR}/creds/service-account.json" ] || usage "spec: specify \`credentials.'service-account.json'\`, the service account to use for Google Cloud"
+[ -f "${WORKDIR}/creds/credentials.json" ] || usage "spec: specify a gcp connection as \`google: \!Connection ...\` in your spec"
 
 $GCLOUD config set core/disable_usage_reporting true
 $GCLOUD config set component_manager/disable_update_check true
 
-$GCLOUD auth activate-service-account --key-file="${WORKDIR}/creds/service-account.json"
+$GCLOUD auth activate-service-account --key-file="${WORKDIR}/creds/credentials.json"
 
-$RM_F "${WORKDIR}/creds/service-account.json"
+$RM_F "${WORKDIR}/creds/credentials.json"
 
 #
 # Actions
@@ -58,5 +58,14 @@ DEPLOYMENT="$( $NI get -p '{ .deployment }' )"
 
 NAMESPACE="$( $NI get -p '{ .namespace }' )"
 [ -z "${NAMESPACE}" ] && usage "spec: specify \`incidentEnvironment\`, the namespace in which the deployment is running"
+
+CLUSTER="$( $NI get -p '{ .cluster }' )"
+[ -z "${CLUSTER}" ] && usage "spec: specify \`cluster\`, the cluster name where deployment is running"
+
+ZONE="$( $NI get -p '{ .zone }' )"
+[ -z "${ZONE}" ] && usage "spec: specify \`zone\`, the zone where the cluster is running"
+
+# generate a kubeconfig
+$GCLOUD container clusters get-credentials $CLUSTER --zone $ZONE
 
 kubectl rollout undo deployment.v1.apps/${DEPLOYMENT} --namespace=${NAMESPACE}
