@@ -2,20 +2,21 @@
 
 Integration with Google for Puppet Relay.
 
-## Actions
+## Steps
 
-The following are supported actions:
+The following steps are available in this integration:
 
-| Type | Name | Description |
-|------|-------------|-----| 
-| Step | [gcp-step-cloud-run-deploy](/steps/gcp-step-cloud-run-deploy) | Deploy cloud run service revision |
-| Step | [gcp-step-instance-delete](/steps/gcp-step-instance-delete) | Delete GCP instances |
-| Step | [gcp-step-instance-list](/steps/gcp-step-instance-list) | List GCP instances |
-| Step | [gcp-step-instance-start](/steps/gcp-step-instance-start) | Start GCP instances |
-| Step | [gcp-step-instance-stop](/steps/gcp-step-instance-stop) | Stops GCP instances |
-| Step | [gcp-step-instance-reset](/steps/gcp-step-instance-reset) | Resets GCP instances |
-| Step | [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
-| Step | [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
+| Name | Description |
+|------|-------------|
+| [gcp-step-cloud-run-deploy](/steps/gcp-step-cloud-run-deploy) | Deploy cloud run service revision |
+| [gcp-step-instance-delete](/steps/gcp-step-instance-delete) | Delete GCP instances |
+| [gcp-step-instance-list](/steps/gcp-step-instance-list) | List GCP instances |
+| [gcp-step-instance-start](/steps/gcp-step-instance-start) | Start GCP instances |
+| [gcp-step-instance-stop](/steps/gcp-step-instance-stop) | Stops GCP instances |
+| [gcp-step-instance-reset](/steps/gcp-step-instance-reset) | Resets GCP instances |
+| [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
+| [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
+| [rollout-undo](/steps/rollout-undo) | Roll back a GKE Deployment on a cluster |
 
 
 ## Contributing
