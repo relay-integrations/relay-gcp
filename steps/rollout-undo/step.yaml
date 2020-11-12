@@ -1,0 +1,38 @@
+apiVersion: integration/v1
+kind: Step
+name: rollout-undo
+version: 5
+summary: Undo the rollout of a Kubernetes Deployment
+
+description: |
+    This will roll back a failing Kubernetes deployment to its
+    previous state, using 'kubectl rollout undo'
+
+publish:
+  repository: relaysh/gcp-step-rollout-undo
+
+schemas:
+  spec: 
+    source: file
+    file: spec.schema.json
+  outputs:
+   $schema: http://json-schema.org/draft-07/schema#
+   type: object
+   properties:
+     result:
+       type: string
+       description: The result of the kubectl command, both stderr and stdout
+
+examples:
+  - summary: Undo a rollout of the nginx deployment in namespace production
+    content: 
+      apiVersion: v1
+      kind: Step
+      name: gcp-rollback
+      image: relaysh/gcp-step-rollout-undo
+      spec:
+        google: !Connection { type: gcp, name: relay-service-account }
+        deployment: !Parameter serviceName
+        namespace: !Parameter namespace
+        cluster: !Parameter cluster
+        zone: !Parameter zone
