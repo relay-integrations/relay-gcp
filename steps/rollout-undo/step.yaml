@@ -8,11 +8,15 @@ description: |
     This will roll back a failing Kubernetes deployment to its
     previous state, using 'kubectl rollout undo'
 
+build:
+  apiVersion: build/v1
+  kind: Docker
+  
 publish:
   repository: relaysh/gcp-step-rollout-undo
 
 schemas:
-  spec: 
+  spec:
     source: file
     file: spec.schema.json
   outputs:
@@ -25,7 +29,7 @@ schemas:
 
 examples:
   - summary: Undo a rollout of the nginx deployment in namespace production
-    content: 
+    content:
       apiVersion: v1
       kind: Step
       name: gcp-rollback
