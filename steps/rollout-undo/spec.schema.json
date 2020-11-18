@@ -1,4 +1,3 @@
-
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
@@ -8,37 +7,37 @@
       "x-relay-connectionType": "gcp",
       "description": "A Relay Google Cloud Platform (GCP) connection to use",
       "properties": {
-    "serviceAccountKey": {
-      "type": "string"
-    }
-        },
-        "required": [
-    "serviceAccountKey"
-        ]
+        "serviceAccountKey": {
+          "type": "string"
+        }
       },
+      "required": [
+        "serviceAccountKey"
+      ]
+    },
     "namespace": {
-        "type":"string",
-        "description":"The namespace in which the deployment is running"
+      "type": "string",
+      "description": "The namespace in which the deployment is running"
     },
     "deployment": {
-        "type":"string",
-        "description":"The name of the deployment to operate on"
+      "type": "string",
+      "description": "The name of the deployment to operate on"
     },
     "cluster": {
-        "type":"string",
-        "description":"The name of the cluster where the deployment is running"
+      "type": "string",
+      "description": "The name of the cluster where the deployment is running"
     },
     "zone": {
-        "type":"string",
-        "description":"The GCP zone where the cluster is running"
-    },
+      "type":"string",
+      "description":"The GCP zone where the cluster is running"
+    }
   },
   "required": [
-      "google",
-      "namespace",
-      "deployment",
-      "cluster",
-      "zone"
+    "google",
+    "namespace",
+    "deployment",
+    "cluster",
+    "zone"
   ],
   "additionalProperties": false
 }
