@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "google": {
+      "type": "object",
+      "x-relay-connectionType": "gcp",
+      "description": "A Relay Google Cloud Platform (GCP) connection to use",
+      "properties": {
+        "serviceAccountKey": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string",
+          "description": "The namespace in which the deployment is running"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the cluster to connect to"
+        },
+        "zone": {
+          "type": "string",
+          "description": "The name of the GCP zone where the cluster is running"
+        }
+      },
+      "required": [
+        "serviceAccountKey",
+        "name",
+        "namespace",
+        "zone"
+      ]
+    },
+    "command": {
+      "type": "string",
+      "description": "The kubectl command to run"
+    },
+    "args": {
+      "type": "array",
+      "description": "Array of additional arguments to give"
+    },
+    "file": {
+      "type": "string",
+      "description": "A resource file to use when command is `apply`."
+    },
+    "git": {
+      "type": "object",
+      "description": "A map of git configuration. If you're using HTTPS, only name and repository are required.",
+      "properties": {
+        "ssh_key": {
+          "type": "string",
+          "description": "The SSH key to use when cloning the git repository. You can pass the key to Relay as a secret. See the example below."
+        },
+        "known_hosts": {
+          "type": "string",
+          "description": "SSH known hosts file. Use a Relay secret to pass the contents of the file into the workflow as a base64-encoded string. See the example below."
+        },
+        "name": {
+          "type": "string",
+          "description": "A directory name for the git clone."
+        },
+        "branch": {
+          "type": "string",
+          "description": "The Git branch to clone.",
+          "default": "master"
+        },
+        "repository": {
+          "type": "string",
+          "description": "The git repository URL."
+        }
+      },
+      "required": [
+        "ssh_key",
+        "name",
+        "repository"
+      ]
+    }
+  },
+  "required": [
+    "google",
+    "command"
+  ],
+  "additionalProperties": false
+}

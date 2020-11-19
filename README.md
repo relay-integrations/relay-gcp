@@ -17,6 +17,7 @@ The following steps are available in this integration:
 | [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
 | [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
 | [rollout-undo](/steps/rollout-undo) | Roll back a GKE Deployment on a cluster |
+| [kubectl](/steps/kubectl) | Run user-supplied kubectl commands against a GCP cluster |
 
 
 ## Contributing

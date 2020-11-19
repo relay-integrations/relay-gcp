@@ -1,0 +1,66 @@
+apiVersion: integration/v1
+kind: Step
+name: kubectl
+version: 5
+summary: Run aribitrary kubectl commands against a gcp cluster
+
+description: |
+  This will run kubectl commands with specified arguments against
+  a configured GCP cluster.
+
+build:
+  apiVersion: build/v1
+  kind: Docker
+
+publish:
+  repository: relaysh/gcp-step-kubectl
+
+schemas:
+  spec:
+    source: file
+    file: spec.schema.json
+  outputs:
+    $schema: http://json-schema.org/draft-07/schema#
+    type: object
+    properties:
+      result:
+        type: string
+        description: The result of the kubectl command, both stderr and stdout
+
+examples:
+- summary: Execute kubectl apply 
+  content:
+    apiVersion: v1
+    kind: Step
+    name: kubectl-command
+    image: relaysh/gcp-step-kubectl
+    spec: 
+      command: apply
+      args: 
+      - "-k"
+      # - "dir/" # Example options
+      file: !Parameter file # Example: infra/resources.yaml
+      google:
+        name: my-cluster
+        namespace: !Parameter namespace # Example: default
+        connection: !Connection { type: gcp, name: my-cluster }
+        zone: us-west1-b
+      git: 
+        ssh_key: !Secret ssh_key
+        known_hosts: !Secret known_hosts
+        name: !Parameter my-repo # Example: my-git-repo 
+        branch: !Parameter branch # Example: main 
+        repository: !Parameter repository # Example: https://github.com/relay-integrations/relay-kubernetes
+- summary: Execute kubectl get nodes 
+  content:
+    apiVersion: v1
+    kind: Step
+    name: kubectl-command
+    image: relaysh/gcp-step-kubectl
+    spec: 
+      command: "get nodes"
+      google:
+        name: my-cluster
+        namespace: !Parameter namespace # Example: default
+        connection: !Connection { type: gcp, name: my-cluster }
+        zone: us-west1-b
