@@ -19,7 +19,7 @@ summary: Cloud run deploy
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
 description: |
-
+    This step deploys a GCP cloud run service revision.
 
 # URL or path relative to this file to an icon or icons representing this
 # action. Optional. Defaults to the integration icon.
