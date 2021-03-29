@@ -47,7 +47,7 @@ steps yourself.
 virtualenv .virtualenv
 source .virtualenv/bin/activate
 .virtualenv/bin/pip install google-api-python-client
-.virtualenv/bin/pip --no-cache-dir install "https://packages.nebula.puppet.net/sdk/support/python/v1/nebula_sdk-1-py3-none-any.whl"
+.virtualenv/bin/pip --no-cache-dir install relay_sdk
 ```
 
 ### License

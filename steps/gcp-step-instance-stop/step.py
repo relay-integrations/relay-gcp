@@ -1,7 +1,7 @@
 import googleapiclient.discovery
 
 from google.oauth2 import service_account
-from nebula_sdk import Interface, Dynamic as D
+from relay_sdk import Interface, Dynamic as D
 import json
 
 def slice(orig, keys):
