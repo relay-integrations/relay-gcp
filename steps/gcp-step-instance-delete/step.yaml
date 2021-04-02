@@ -18,8 +18,7 @@ summary: Delete instances
 
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
-description: |
-    This step deletes a set of GCP compute instances.
+description: Deletes a set of GCP compute instances.
 
 # URL or path relative to this file to an icon or icons representing this
 # action. Optional. Defaults to the integration icon.

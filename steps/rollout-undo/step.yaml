@@ -4,9 +4,8 @@ name: rollout-undo
 version: 5
 summary: Undo the rollout of a Kubernetes Deployment
 
-description: |
-  This will roll back a failing Kubernetes deployment to its
-  previous state, using 'kubectl rollout undo'
+description: Rolls back a failing Kubernetes deployment to its
+  previous state, using 'kubectl rollout undo'.
 
 build:
   apiVersion: build/v1
