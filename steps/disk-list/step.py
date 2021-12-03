@@ -4,15 +4,19 @@ from google.oauth2 import service_account
 from relay_sdk import Interface, Dynamic as D
 import json
 
+
 def slice(orig, keys):
     return {key: orig[key] for key in keys if key in orig}
+
 
 def slice_arr(orig, keys):
     return [slice(obj, keys) for obj in orig]
 
+
 def do_list_disks(compute, project_id, zone):
     result = compute.disks().list(project=project_id, zone=zone).execute()
     return result['items'] if 'items' in result else []
+
 
 def list_disks():
     # For security purposes we whitelist the keys that can be fed in to the
@@ -38,10 +42,13 @@ def list_disks():
         exit(1)
 
     # TODO: How to validate all the required data is present here?
-    service_account_info=slice(json.loads(relay.get(D.google.service_account_info)['serviceAccountKey']), service_account_info_keys)
+    service_account_info = slice(json.loads(relay.get(D.google.service_account_info)[
+                                 'serviceAccountKey']), service_account_info_keys)
 
-    credentials = service_account.Credentials.from_service_account_info(service_account_info)
-    compute = googleapiclient.discovery.build('compute', 'v1', credentials=credentials)
+    credentials = service_account.Credentials.from_service_account_info(
+        service_account_info)
+    compute = googleapiclient.discovery.build(
+        'compute', 'v1', credentials=credentials)
 
     disks = do_list_disks(compute, credentials.project_id, zone=zone)
 
@@ -49,25 +56,26 @@ def list_disks():
     # We're explicit about the keys that we want to publish for documentation
     # purposes.
     disk_keys = [
-	"id",
-	"kind",
-	"labelFingerprint",
-	"labels",
-	"description",
-	"creationTimestamp",
-	"sizeGb",
-	"users",
-	"name",
-	"selfLink",
-	"status",
-	"zone",
-    "sourceSnapshot",
-    "sourceSnapshotId",
-    "options"
-    "type"
+        "id",
+        "kind",
+        "labelFingerprint",
+        "labels",
+        "description",
+        "creationTimestamp",
+        "sizeGb",
+        "users",
+        "name",
+        "selfLink",
+        "status",
+        "zone",
+        "sourceSnapshot",
+        "sourceSnapshotId",
+        "options",
+        "type"
     ]
 
     return slice_arr(disks, disk_keys)
+
 
 if __name__ == "__main__":
     relay = Interface()
@@ -77,7 +85,8 @@ if __name__ == "__main__":
         exit(1)
     print("Found the following disks:\n")
     print("{:<80} {:<30} {:<30}".format('NAME', 'STATUS', 'SIZEGB'))
-    for disk in disks: 
-        print("{:<80} {:<30} {:<30}".format(disk['name'], disk['status'], disk['sizeGb']))
+    for disk in disks:
+        print("{:<80} {:<30} {:<30}".format(
+            disk['name'], disk['status'], disk['sizeGb']))
     print('\nAdding {0} disk(s) to the output `disks`'.format(len(disks)))
     relay.outputs.set("disks", disks)
