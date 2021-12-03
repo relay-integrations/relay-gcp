@@ -1,45 +1,20 @@
-# The schema version. Required. Must be exactly the string "integration/v1".
 apiVersion: integration/v1
-
-# The schema kind. Required. Must be one of "Query", "Step", or "Trigger"
-# corresponding to its directory location.
 kind: Step
-
-# The name of the action. Required. Must be exactly the name of the directory
-# containing the action.
-name: gcp-step-instance-stop
-
-# The version of the action. Required. Must be an integer. If specified in the
-# directory name, must be exactly the version in the directory name.
+name: instance-stop
 version: 3
-
-# High-level phrase describing what this action does. Required.
 summary: Stop instances
 
-# Single-paragraph explanation of what this action does in more detail.
-# Optional. Markdown.
 description: Stops a set of GCP compute instances.
 
-# URL or path relative to this file to an icon or icons representing this
-# action. Optional. Defaults to the integration icon.
-icon:
-
-# The mechanism to use to construct this step. Required. Must be an action
-# builder. See the Builders section below.
 build:
-  # The schema version for builders. Required. For now, must be the exact
-  # string "build/v1". We may consider supporting custom third-party builders
-  # in the future.
   apiVersion: build/v1
-
-  # The builder to use. Required.
   kind: Docker
 
 publish:
   repository: relaysh/gcp-step-instance-stop
 
 schemas:
-  spec: 
+  spec:
     source: file
     file: spec.schema.json
 
@@ -49,10 +24,10 @@ examples:
     apiVersion: v1
     kind: Step
     name: stop-instances
-    image: relaysh/gcp-step-instance-stop	
+    image: relaysh/gcp-step-instance-stop
     spec:
       google:
-        service_account_info: !Connection { type: gcp, name: my-gcp-account }
-        zone: !Parameter gcpZone
-      instances: 
-      - !Parameter instanceName
+        service_account_info: ${connections.gcp.my-gcp-account}
+        zone: ${parameters.gcpZone}
+      instances:
+        - ${parameters.instanceName}
