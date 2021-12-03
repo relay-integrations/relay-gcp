@@ -8,16 +8,16 @@ The following steps are available in this integration:
 
 | Name | Description |
 |------|-------------|
-| [gcp-step-cloud-run-deploy](/steps/cloud-run-deploy) | Deploy cloud run service revision |
-| [gcp-step-instance-delete](/steps/instance-delete) | Delete GCP instances |
-| [gcp-step-instance-list](/steps/instance-list) | List GCP instances |
-| [gcp-step-instance-start](/steps/instance-start) | Start GCP instances |
-| [gcp-step-instance-stop](/steps/instance-stop) | Stops GCP instances |
-| [gcp-step-instance-suspend](/steps/instance-suspend) | Suspends GCP instances |
-| [gcp-step-instance-reset](/steps/instance-reset) | Resets GCP instances |
-| [gcp-step-instance-resume](/steps/instance-resume) | Resumes GCP instances |
-| [gcp-step-disk-delete](/steps/disk-delete) | Delete GCP disks |
-| [gcp-step-disk-list](/steps/disk-list) | List GCP disks |
+| [cloud-run-deploy](/steps/cloud-run-deploy) | Deploy cloud run service revision |
+| [instance-delete](/steps/instance-delete) | Delete GCP instances |
+| [instance-list](/steps/instance-list) | List GCP instances |
+| [instance-start](/steps/instance-start) | Start GCP instances |
+| [instance-stop](/steps/instance-stop) | Stops GCP instances |
+| [instance-suspend](/steps/instance-suspend) | Suspends GCP instances |
+| [instance-reset](/steps/instance-reset) | Resets GCP instances |
+| [instance-resume](/steps/instance-resume) | Resumes GCP instances |
+| [disk-delete](/steps/disk-delete) | Delete GCP disks |
+| [disk-list](/steps/disk-list) | List GCP disks |
 | [rollout-undo](/steps/rollout-undo) | Roll back a GKE Deployment on a cluster |
 
 
@@ -41,17 +41,13 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 ### Development
 
-The python steps in this repository require Python 3. It's recommended you
-setup a virtualenv with the relevant depedencies in it for running the python
-steps yourself.
+The python steps in this repository require Python 3.
 
 ```bash
-virtualenv .virtualenv
-source .virtualenv/bin/activate
-.virtualenv/bin/pip install google-api-python-client
-.virtualenv/bin/pip --no-cache-dir install relay_sdk
+pip3 install google-api-python-client
+pip3 --no-cache-dir install relay_sdk
 ```
 
 ### License
 
-As indicated by the repository, this project is licensed under Apache 2.0.
+This project is [licensed](LICENSE) under Apache 2.0.
