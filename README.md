@@ -15,6 +15,7 @@ The following steps are available in this integration:
 | [gcp-step-instance-stop](/steps/gcp-step-instance-stop) | Stops GCP instances |
 | [gcp-step-instance-suspend](/steps/gcp-step-instance-suspend) | Suspends GCP instances |
 | [gcp-step-instance-reset](/steps/gcp-step-instance-reset) | Resets GCP instances |
+| [gcp-step-instance-resume](/steps/gcp-step-instance-resume) | Resumes GCP instances |
 | [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
 | [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
 | [rollout-undo](/steps/rollout-undo) | Roll back a GKE Deployment on a cluster |
