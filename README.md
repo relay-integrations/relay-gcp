@@ -8,16 +8,16 @@ The following steps are available in this integration:
 
 | Name | Description |
 |------|-------------|
-| [gcp-step-cloud-run-deploy](/steps/gcp-step-cloud-run-deploy) | Deploy cloud run service revision |
-| [gcp-step-instance-delete](/steps/gcp-step-instance-delete) | Delete GCP instances |
-| [gcp-step-instance-list](/steps/gcp-step-instance-list) | List GCP instances |
-| [gcp-step-instance-start](/steps/gcp-step-instance-start) | Start GCP instances |
-| [gcp-step-instance-stop](/steps/gcp-step-instance-stop) | Stops GCP instances |
-| [gcp-step-instance-suspend](/steps/gcp-step-instance-suspend) | Suspends GCP instances |
-| [gcp-step-instance-reset](/steps/gcp-step-instance-reset) | Resets GCP instances |
-| [gcp-step-instance-resume](/steps/gcp-step-instance-resume) | Resumes GCP instances |
-| [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
-| [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
+| [gcp-step-cloud-run-deploy](/steps/cloud-run-deploy) | Deploy cloud run service revision |
+| [gcp-step-instance-delete](/steps/instance-delete) | Delete GCP instances |
+| [gcp-step-instance-list](/steps/instance-list) | List GCP instances |
+| [gcp-step-instance-start](/steps/instance-start) | Start GCP instances |
+| [gcp-step-instance-stop](/steps/instance-stop) | Stops GCP instances |
+| [gcp-step-instance-suspend](/steps/instance-suspend) | Suspends GCP instances |
+| [gcp-step-instance-reset](/steps/instance-reset) | Resets GCP instances |
+| [gcp-step-instance-resume](/steps/instance-resume) | Resumes GCP instances |
+| [gcp-step-disk-delete](/steps/disk-delete) | Delete GCP disks |
+| [gcp-step-disk-list](/steps/disk-list) | List GCP disks |
 | [rollout-undo](/steps/rollout-undo) | Roll back a GKE Deployment on a cluster |
 
 
