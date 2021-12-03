@@ -13,6 +13,7 @@ The following steps are available in this integration:
 | [gcp-step-instance-list](/steps/gcp-step-instance-list) | List GCP instances |
 | [gcp-step-instance-start](/steps/gcp-step-instance-start) | Start GCP instances |
 | [gcp-step-instance-stop](/steps/gcp-step-instance-stop) | Stops GCP instances |
+| [gcp-step-instance-suspend](/steps/gcp-step-instance-suspend) | Suspends GCP instances |
 | [gcp-step-instance-reset](/steps/gcp-step-instance-reset) | Resets GCP instances |
 | [gcp-step-disk-delete](/steps/gcp-step-disk-delete) | Delete GCP disks |
 | [gcp-step-disk-list](/steps/gcp-step-disk-list) | List GCP disks |
